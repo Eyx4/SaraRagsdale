@@ -3,40 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Precision Coordinates and Webcam Viewer</title>
+    <title>Static Map Viewer</title>
 </head>
 <body>
-    <h1>High-Precision Coordinates:</h1>
-    <p id="coordinates">Loading...</p>
-
-    <h1>Webcam Viewer:</h1>
-    <video id="webcam" width="640" height="480" autoplay></video>
-
-    <script>
-        // High-precision coordinates
-        const highPrecisionLatitude = 33.92114970000000000000;
-        const highPrecisionLongitude = -85.00061420000000000000;
-
-        // Display the coordinates
-        const coordinatesElement = document.getElementById('coordinates');
-        coordinatesElement.textContent = `Latitude: ${highPrecisionLatitude}, Longitude: ${highPrecisionLongitude}`;
-
-        // Webcam setup
-        const webcamElement = document.getElementById('webcam');
-
-        // Check if getUserMedia is supported
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(function (stream) {
-                    // Set the webcam stream as the source for the video element
-                    webcamElement.srcObject = stream;
-                })
-                .catch(function (error) {
-                    console.error('Error accessing the webcam:', error);
-                });
-        } else {
-            console.error('getUserMedia is not supported on your browser');
-        }
-    </script>
+    <h1>Location on Static Map:</h1>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=33.9211497,-85.0006142&zoom=15&size=640x480&markers=33.9211497,-85.0006142" alt="Location on Map">
 </body>
 </html>
